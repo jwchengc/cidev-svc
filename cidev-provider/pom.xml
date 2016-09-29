@@ -12,6 +12,22 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cidev-provider</name>
 	<url>http://maven.apache.org</url>
+	<build>
+		<finalName>cidev-provider</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -138,9 +154,6 @@
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
-	<build>
-		<finalName>cidev-provider</finalName>
-	</build>
 	<repositories>
 		<repository>
 			<id>public</id>

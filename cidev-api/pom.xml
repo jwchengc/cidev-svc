@@ -17,9 +17,18 @@
 			<version>2.6.5</version>
 		</dependency>
 	</dependencies>
-	<build>
-		<finalName>cidev-api</finalName>
-	</build>
+	<distributionManagement>
+		<repository>
+			<id>nexus-snapshots</id>
+			<name>Local Nexus Repository</name>
+			<url>http://10.9.80.220:8081/nexus/content/repositories/beehive/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Local Nexus Repository</name>
+			<url>http://10.9.80.220:8081/nexus/content/repositories/beehive-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<repositories>
 		<repository>
 			<id>public</id>
