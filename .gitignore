@@ -1,5 +1,6 @@
 /target/
 /cidev-provider/
 /cidev-api/
-/.settings/
-/bin/
+.settings/
+.classpath
+bin/
