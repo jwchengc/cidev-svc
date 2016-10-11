@@ -4,3 +4,6 @@
 .settings/
 .classpath
 bin/
+.idea/
+cidev-svc.iml
+src/
