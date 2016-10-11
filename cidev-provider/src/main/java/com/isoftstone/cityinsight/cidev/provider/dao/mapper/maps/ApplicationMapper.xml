@@ -38,13 +38,19 @@
 		<result property="fileUrl" column="file_url" jdbcType="VARCHAR" />
 	</resultMap>
 	
-	<select id="selectRecommendServices" resultMap="Application">
-		select *
+	<select id="selectRecommendServices" resultMap="Application" parameterType="hashmap">
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
+		       ver.version_id, ver.app_version, ver.description
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.mobile, ver.address, 
+		       file.file_url
 		  from (select * from cidev_application where app_id in (select app_id from cidev_recommend_apps) and app_type = #{appType}) app
-		  join cidev_application_version ver on app.app_id = ver.app_id
+		  join (select * from cidev_application_version 
+		         where version_id in (select SUBSTRING_INDEX(group_concat(version_id order by onlined_at desc),',',1) 
+		                        from cidev_application_version group by app_id 
+		                     )
+		        ) ver on app.app_id = ver.app_id
 		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0
-		  join cibase_files file on fileass.file_id = file.file_id
-		  
-	
+		  join cibase_files file on fileass.file_id = file.file_id	
 	</select>
 </mapper>
