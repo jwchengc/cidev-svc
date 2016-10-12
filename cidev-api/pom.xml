@@ -1,6 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.isoftstone.cityinsight</groupId>
+		<artifactId>cidev-svc</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 	<groupId>com.isoftstone.cityinsight</groupId>
 	<artifactId>cidev-api</artifactId>
 	<packaging>jar</packaging>
@@ -9,37 +14,15 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jackson-annotations_version>2.6.5</jackson-annotations_version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
-			<version>2.6.5</version>
+			<version>${jackson-annotations_version}</version>
 		</dependency>
 	</dependencies>
-	<distributionManagement>
-		<repository>
-			<id>nexus-snapshots</id>
-			<name>Local Nexus Repository</name>
-			<url>http://10.9.80.220:8081/nexus/content/repositories/beehive/</url>
-		</repository>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<name>Local Nexus Repository</name>
-			<url>http://10.9.80.220:8081/nexus/content/repositories/beehive-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
-	<repositories>
-		<repository>
-			<id>public</id>
-			<name>Public Repositories</name>
-			<url>http://10.9.80.220:8081/nexus/content/groups/public-beehive/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+
+
 </project>
