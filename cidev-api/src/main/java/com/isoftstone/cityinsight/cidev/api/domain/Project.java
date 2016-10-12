@@ -9,6 +9,9 @@ public class Project {
 	private String description;
 	private String ownerId;
 	private Date createdAt;
+	
+	//非持久化字段
+	private String srcUrl;
 
 	public String getProjectId() {
 		return projectId;
@@ -56,5 +59,13 @@ public class Project {
 
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public String getSrcUrl() {
+		return srcUrl;
+	}
+
+	public void setSrcUrl(String srcUrl) {
+		this.srcUrl = srcUrl;
 	}
 }

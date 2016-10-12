@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.cityinsight.cidev.provider.dao.mapper.ProjectMapper" >
+	<resultMap type="com.isoftstone.cityinsight.cidev.api.domain.Project" id="projectBase">
+		<id property="projectId" column="project_id" jdbcType="VARCHAR" />
+		<result property="projectName" column="project_name" jdbcType="VARCHAR" />
+		<result property="projectType" column="project_type" jdbcType="VARCHAR" />
+		<result property="description" column="description" jdbcType="VARCHAR" />
+		<result property="ownerId" column="owner_id" jdbcType="VARCHAR" />
+		<result property="createdAt" column="created_at" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<resultMap type="com.isoftstone.cityinsight.cidev.api.domain.Project" id="project" extends="projectBase" >
+		<result property="srcUrl" column="file_url" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<select id="selectProjectsByOwnerId" resultMap="project" parameterType="string" >
+		select p.project_id, p.project_name, p.project_type, p.description,
+		       p.owner_id, p.created_at, f.file_url
+		  from (select * form cidev_project where owner_id = #{ownerId}) p
+		  join cidev_base_files_assoc a on p.project_id = a.version_id and a.file_type = 2
+		  join cibase_files f on a.file_id = f.file_id
+		order by p.created_at DESC
+	</select>
+	
+	<insert id="save" parameterType="com.isoftstone.cityinsight.cidev.api.domain.Project" >
+		insert into cidev_project (project_id, project_name, project_type, description, owner_id, created_at)
+		values(#{projectId}, #{projectName}, #{projectType}, #{description}, #{ownerId}, now())
+	</insert>
+		
+	<insert id="saveProjectFile" parameterType="com.isoftstone.cityinsight.cidev.api.domain.File" >
+		insert into cibase_files(file_id, file_name, file_path, file_size, file_suffix, file_content_type, file_url, created_by, created_at) 
+		values(#{fileId}, #{fileName}, #{filePath}, #{fileSize}, #{fileSuffix}, #{fileContentType}, #{fileUrl}, #{createdBy}, now())
+	</insert>
+	
+	<insert id="saveProjectFileAssoc" parameterType="com.isoftstone.cityinsight.cidev.api.domain.FilesAssoc" >
+		insert into cidev_base_files_assoc(file_assoc_id, version_id, file_id, file_type, file_seq) 
+		values(#{fileAssocId}, #{versionId}, #{fileId}, #{fileType}, #{fileSeq})
+	</insert>
+</mapper>
