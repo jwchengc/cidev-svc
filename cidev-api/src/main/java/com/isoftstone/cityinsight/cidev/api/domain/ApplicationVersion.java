@@ -13,6 +13,8 @@ public class ApplicationVersion {
 	private String linkMan;
 	private String mobile;
 	private String address;
+	private Integer currentAuditStatus;
+	private Integer isOnlinedStatus;
 	private String createdBy;
 	private Date createdAt;
 	
@@ -87,6 +89,18 @@ public class ApplicationVersion {
 	}
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+	public Integer getCurrentAuditStatus() {
+		return currentAuditStatus;
+	}
+	public void setCurrentAuditStatus(Integer currentAuditStatus) {
+		this.currentAuditStatus = currentAuditStatus;
+	}
+	public Integer getIsOnlinedStatus() {
+		return isOnlinedStatus;
+	}
+	public void setIsOnlinedStatus(Integer isOnlinedStatus) {
+		this.isOnlinedStatus = isOnlinedStatus;
 	}
 
 }

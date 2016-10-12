@@ -15,5 +15,13 @@ public interface ApplicationMapper {
 	Application selectServiceAndVersionDetail(Map<String, String> appIdAndVerId);
 	
 	List<File> selectServiceFileInfosByVersionId(String versionId);
+	
+	//-----------my service begin -----------------//
+	
+	List<Application> selectSelfOnlinedServices(Map<String, Object> params);
+	
+	List<Application> selectSelfNewestServices(Map<String, Object> params);
+	
+	List<Application> selectSelfAppVersionList(String appId);
 
 }

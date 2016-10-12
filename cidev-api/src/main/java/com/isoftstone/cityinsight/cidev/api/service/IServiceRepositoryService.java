@@ -12,4 +12,11 @@ public interface IServiceRepositoryService {
 	public List<Application> getAllServices(Integer pageNum, Integer pageSize);
 	
 	public Map<String, Object> getServiceDetail(String appId, String versionId);
+	
+	//-----------my service begin -----------------//
+	public List<Application> selectSelfOnlinedServices(String userId, String appType, Integer pageNum, Integer pageSize);
+	
+	public List<Application> selectSelfNewestServices(String userId, String appType, Integer pageNum, Integer pageSize);
+	
+	List<Application> selectSelfAppVersionList(String appId, Integer pageNum, Integer pageSize);
 }
