@@ -38,6 +38,20 @@
 		<result property="fileUrl" column="file_url" jdbcType="VARCHAR" />
 	</resultMap>
 	
+	<resultMap type="com.isoftstone.cityinsight.cidev.api.domain.File" id="File">
+		<id property="fileId" column="file_id" jdbcType="VARCHAR" />
+		<result property="fileName" column="file_name" jdbcType="VARCHAR" />
+		<result property="filePath" column="file_path" jdbcType="VARCHAR" />
+		<result property="fileSize" column="file_size" jdbcType="VARCHAR" />
+		<result property="fileSuffix" column="file_suffix" jdbcType="VARCHAR" />
+		<result property="fileContentType" column="file_content_type" jdbcType="VARCHAR" />
+		<result property="fileUrl" column="file_url" jdbcType="VARCHAR" />
+		<result property="createdBy" column="created_by" jdbcType="VARCHAR" />
+		<result property="createdAt" column="created_at" jdbcType="TIMESTAMP" />
+		<result property="fileType" column="file_type" jdbcType="INTEGER" />
+		<result property="fileSeq" column="file_seq" jdbcType="INTEGER" />
+	</resultMap>
+	
 	<select id="selectRecommendServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description
@@ -45,12 +59,39 @@
 		       ver.mobile, ver.address, 
 		       file.file_url
 		  from (select * from cidev_application where app_id in (select app_id from cidev_recommend_apps) and app_type = #{appType}) app
-		  join (select * from cidev_application_version 
-		         where version_id in (select SUBSTRING_INDEX(group_concat(version_id order by onlined_at desc),',',1) 
-		                        from cidev_application_version group by app_id 
-		                     )
-		        ) ver on app.app_id = ver.app_id
+		  join (select * from cidev_application_version where is_onlined_version = 0) ver on app.app_id = ver.app_id
 		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0
 		  join cibase_files file on fileass.file_id = file.file_id	
+	</select>
+	
+	<select id="selectAllServices" resultMap="Application" parameterType="hashmap">
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
+		       ver.version_id, ver.app_version, ver.description
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.mobile, ver.address, 
+		       file.file_url
+		  from (select * from cidev_application where app_type = #{appType} and is_onlined = 0) app
+		  join (select * from cidev_application_version where is_onlined_version = 0) ver on app.app_id = ver.app_id
+		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0
+		  join cibase_files file on fileass.file_id = file.file_id	
+	</select>
+	
+	<select id="selectServiceOnlineVersionDetail" resultMap="Application" parameterType="string" >
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.created_at,
+		       ver.version_id, ver.app_version, ver.description
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.mobile, ver.address
+		  from (select * from cidev_application where app_id = #{appId}) app
+		  join (select * from cidev_application_version where is_onlined_version = 0 and app_id = #{appId}) ver on app.app_id = ver.app_id
+	</select>
+	
+	<select id="selectServiceFileInfosByVersionId" parameterType="string" resultMap="File" >
+		select assoc.file_id, assoc.file_name, assoc.file_path, assoc.file_size
+		       , assoc.file_suffix, assoc.file_content_type, assoc.file_url
+		       , assoc.created_by, assoc.created_at, file.file_type, file.file_seq
+		  from (select * from cidev_base_files_assoc where version_id = #{versionId}) assoc
+		  join cibase_files file
+		    on assoc.file_id = file.file_id
+		order by assoc.file_type, assoc.file_seq
 	</select>
 </mapper>

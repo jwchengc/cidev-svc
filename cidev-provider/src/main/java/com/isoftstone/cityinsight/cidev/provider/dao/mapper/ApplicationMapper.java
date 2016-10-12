@@ -4,9 +4,16 @@ import java.util.List;
 import java.util.Map;
 
 import com.isoftstone.cityinsight.cidev.api.domain.Application;
+import com.isoftstone.cityinsight.cidev.api.domain.File;
 
 public interface ApplicationMapper {
 	
-	public List<Application> selectRecommendServices(Map<String, Object> params);
+	List<Application> selectRecommendServices(Map<String, Object> params);
+	
+	List<Application> selectAllServices(Map<String, Object> params);
+	
+	Application selectServiceOnlineVersionDetail(String appId);
+	
+	List<File> selectServiceFileInfosByVersionId(String versionId);
 
 }
