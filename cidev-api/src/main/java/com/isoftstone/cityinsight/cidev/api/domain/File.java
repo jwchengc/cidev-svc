@@ -14,6 +14,10 @@ public class File {
 	private String createdBy;
 	private Date createdAt;
 	
+	//非持久化字段
+	private Integer fileType;
+	private Integer fileSeq;
+	
 	public String getFileId() {
 		return fileId;
 	}
@@ -67,6 +71,18 @@ public class File {
 	}
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+	public Integer getFileType() {
+		return fileType;
+	}
+	public void setFileType(Integer fileType) {
+		this.fileType = fileType;
+	}
+	public Integer getFileSeq() {
+		return fileSeq;
+	}
+	public void setFileSeq(Integer fileSeq) {
+		this.fileSeq = fileSeq;
 	}
 
 }

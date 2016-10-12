@@ -12,34 +12,34 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.isoftstone.cityinsight.cidev.api.domain.Application;
 import com.isoftstone.cityinsight.cidev.api.domain.File;
-import com.isoftstone.cityinsight.cidev.api.service.IServiceRepositoryService;
+import com.isoftstone.cityinsight.cidev.api.service.IComponentRepositoryService;
 import com.isoftstone.cityinsight.cidev.provider.dao.mapper.ApplicationMapper;
 
-public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
-	
+public class ComponentRepositoryServiceImpl implements IComponentRepositoryService {
+
 	@Autowired
 	private ApplicationMapper applicationMapper;
-
+	
 	@Override
-	public List<Application> getRecommendServices(String userId, Integer pageNum, Integer pageSize) {
+	public List<Application> getRecommendComponents(String userId, Integer pageNum, Integer pageSize) {
 		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("appType", "cso");
+		params.put("appType", "co");
 		applicationMapper.selectRecommendServices(params);
 		return page.getResult();
 	}
 
 	@Override
-	public List<Application> getAllServices(Integer pageNum, Integer pageSize) {
+	public List<Application> getAllComponents(Integer pageNum, Integer pageSize) {
 		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("appType", "cso");
+		params.put("appType", "co");
 		applicationMapper.selectAllServices(params);
 		return page.getResult();
 	}
 
 	@Override
-	public Map<String, Object> getServiceDetail(String appId) {
+	public Map<String, Object> getComponentsDetail(String appId) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		Application app = applicationMapper.selectServiceOnlineVersionDetail(appId);
 		if (app != null) {
