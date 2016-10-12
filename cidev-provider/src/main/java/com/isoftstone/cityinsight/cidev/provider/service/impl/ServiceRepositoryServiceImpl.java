@@ -39,11 +39,14 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 	}
 
 	@Override
-	public Map<String, Object> getServiceDetail(String appId) {
+	public Map<String, Object> getServiceDetail(String appId, String versionId) {
 		Map<String, Object> result = new HashMap<String, Object>();
-		Application app = applicationMapper.selectServiceOnlineVersionDetail(appId);
+		Map<String, String> appIdAndVerId = new HashMap<String, String>();
+		appIdAndVerId.put("appId", appId);
+		appIdAndVerId.put("versionId", versionId);
+		Application app = applicationMapper.selectServiceAndVersionDetail(appIdAndVerId);
 		if (app != null) {
-			List<File> files = applicationMapper.selectServiceFileInfosByVersionId(app.getVersionId());
+			List<File> files = applicationMapper.selectServiceFileInfosByVersionId(versionId);
 			if (CollectionUtils.isNotEmpty(files)) {
 				List<File> shotcuts = new ArrayList<File>();
 				for (File file : files) {

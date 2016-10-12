@@ -11,5 +11,5 @@ public interface IComponentRepositoryService {
 	
 	public List<Application> getAllComponents(Integer pageNum, Integer pageSize);
 	
-	public Map<String, Object> getComponentsDetail(String appId);
+	public Map<String, Object> getComponentsDetail(String appId, String versionId);
 }

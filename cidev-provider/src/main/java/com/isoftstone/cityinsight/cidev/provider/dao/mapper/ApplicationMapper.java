@@ -12,7 +12,7 @@ public interface ApplicationMapper {
 	
 	List<Application> selectAllServices(Map<String, Object> params);
 	
-	Application selectServiceOnlineVersionDetail(String appId);
+	Application selectServiceAndVersionDetail(Map<String, String> appIdAndVerId);
 	
 	List<File> selectServiceFileInfosByVersionId(String versionId);
 
