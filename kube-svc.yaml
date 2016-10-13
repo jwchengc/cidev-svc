@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: cidev-svc
+  labels:
+    component: cidev-svc
+spec: 
+  ports:
+    - port: 8888
+      nodePort: 16888
+  selector: 
+    name: cidev-svc
+  type: NodePort
+
