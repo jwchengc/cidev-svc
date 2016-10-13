@@ -160,4 +160,9 @@
 		</foreach>
 	</insert>
 	
+	<insert id="appendAuditInfo" parameterType="hashmap" >
+		insert into cidev_application_version_audit(audit_id, version_id, audit_info, audit_status, audited_at, audited_by, created_at)
+		values(#{auditId}, #{versionId}, #{auditInfo, jdbcType=VARCHAR}, #{auditStatus}, #{auditedAt, jdbcType=VARCHAR}, #{auditedBy, jdbcType=VARCHAR}, now())
+	</insert>
+	
 </mapper>

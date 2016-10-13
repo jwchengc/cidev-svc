@@ -19,4 +19,6 @@ public interface IServiceRepositoryService {
 	public List<Application> selectSelfNewestServices(String userId, String appType, Integer pageNum, Integer pageSize);
 	
 	List<Application> selectSelfAppVersionList(String appId, Integer pageNum, Integer pageSize);
+	
+	void save(Application application, String iconId, String srcId, String shotcutIds);
 }

@@ -32,5 +32,7 @@ public interface ApplicationMapper {
 	void saveFileAssoc(FilesAssoc filesAssoc);
 	
 	void saveFileAssocList(List<FilesAssoc> list);
+	
+	void appendAuditInfo(Map<String, Object> auditInfo);
 
 }

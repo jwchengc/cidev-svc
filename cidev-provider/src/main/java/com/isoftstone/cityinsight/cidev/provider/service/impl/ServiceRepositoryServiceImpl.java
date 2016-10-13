@@ -142,6 +142,12 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 			}
 			applicationMapper.saveFileAssocList(stf);
 		}
+		
+		Map<String, Object> auditInfo = new HashMap<String, Object>();
+		auditInfo.put("auditId", UUID.randomUUID().toString());
+		auditInfo.put("versionId", application.getVersionId());
+		auditInfo.put("auditStatus", 0);
+		applicationMapper.appendAuditInfo(auditInfo);
 	}
 
 }
