@@ -134,4 +134,30 @@
 		  join (select * from cidev_application_version where app_id = #{appId}) ver 
 		    on app.app_id = ver.app_id
 	</select>
+	
+	<insert id="saveApplication" parameterType="com.isoftstone.cityinsight.cidev.api.domain.Application">
+		insert into cidev_application(app_id, app_name, app_type, svc_category_id, is_onlined, created_by, created_at)
+		values(#{appId}, #{appName}, #{appType}, #{svcCategoryId}, 1, #{createdBy}, now())
+	</insert>
+	
+	<insert id="saveApplicationVersion" parameterType="com.isoftstone.cityinsight.cidev.api.domain.Application">
+		insert into cidev_application_version(version_id, app_id, app_version, description, version_info, keyword, 
+		       copyright, link_man, mobile, address, current_audit_status, is_onlined_version, created_by, created_at)
+		values(#{versionId}, #{appId}, #{appVersion}, #{description}, #{versionInfo}, #{keyword}, #{copyright}, 
+		#{linkMan}, #{mobile}, #{address}, 0, 1, #{createdBy}, now())
+	</insert>
+	
+	<insert id="saveFileAssoc" parameterType="com.isoftstone.cityinsight.cidev.api.domain.FilesAssoc" >
+		insert into cidev_base_files_assoc(file_assoc_id, version_id, file_id, file_type, file_seq) 
+		values(#{item.fileAssocId}, #{item.versionId}, #{item.fileId}, #{item.fileType}, #{item.fileSeq})
+	</insert>
+	
+	<insert id="saveFileAssocList" parameterType="java.util.List" >
+		insert into cidev_base_files_assoc(file_assoc_id, version_id, file_id, file_type, file_seq) 
+		values
+		<foreach collection="list" item="item" index="index" separator=",">
+		(#{item.fileAssocId}, #{item.versionId}, #{item.fileId}, #{item.fileType}, #{item.fileSeq})
+		</foreach>
+	</insert>
+	
 </mapper>

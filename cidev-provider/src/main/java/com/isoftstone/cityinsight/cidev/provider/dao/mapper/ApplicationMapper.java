@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.isoftstone.cityinsight.cidev.api.domain.Application;
 import com.isoftstone.cityinsight.cidev.api.domain.File;
+import com.isoftstone.cityinsight.cidev.api.domain.FilesAssoc;
 
 public interface ApplicationMapper {
 	
@@ -23,5 +24,13 @@ public interface ApplicationMapper {
 	List<Application> selectSelfNewestServices(Map<String, Object> params);
 	
 	List<Application> selectSelfAppVersionList(String appId);
+	
+	void saveApplication(Application application);
+	
+	void saveApplicationVersion(Application application);
+	
+	void saveFileAssoc(FilesAssoc filesAssoc);
+	
+	void saveFileAssocList(List<FilesAssoc> list);
 
 }
