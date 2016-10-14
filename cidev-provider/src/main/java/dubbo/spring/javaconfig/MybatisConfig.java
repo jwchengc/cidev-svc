@@ -1,4 +1,4 @@
-package com.isoftstone.cityinsight.cidev.provider.configuration;
+package dubbo.spring.javaconfig;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;

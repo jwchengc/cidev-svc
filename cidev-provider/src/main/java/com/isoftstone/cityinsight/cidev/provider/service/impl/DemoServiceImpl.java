@@ -10,6 +10,8 @@ import com.github.pagehelper.PageHelper;
 import com.isoftstone.cityinsight.cidev.api.domain.Demo;
 import com.isoftstone.cityinsight.cidev.api.service.DemoService;
 import com.isoftstone.cityinsight.cidev.provider.dao.mapper.DemoMapper;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 @Service
 public class DemoServiceImpl implements DemoService {
