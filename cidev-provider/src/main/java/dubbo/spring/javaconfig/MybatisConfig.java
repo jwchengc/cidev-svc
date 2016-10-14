@@ -1,26 +1,42 @@
 package dubbo.spring.javaconfig;
 
+import java.io.IOException;
+
+import javax.sql.DataSource;
+
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.init.DataSourceInitializer;
+import org.springframework.jdbc.datasource.init.DatabasePopulator;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.stereotype.Repository;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
-import javax.sql.DataSource;
-import java.io.IOException;
-
 @Configuration
-@MapperScan({ "com.isoftstone.cityinsight.cidev.provider.dao.mapper" })
+@MapperScan(basePackages={"com.isoftstone.cityinsight.cidev.provider.dao.mapper"}, annotationClass=Repository.class)
 public class MybatisConfig {
 	
 	@Bean
-	@ConfigurationProperties(prefix="spring.datasource")
-	public DataSource dataSource() {
-		return new DruidDataSource();
+	public DataSource dataSource(Environment env) {
+		
+		DruidDataSource dataSource = new DruidDataSource();
+		dataSource.setDriverClassName(env.getProperty("jdbc.driver"));
+        dataSource.setUrl(env.getProperty("jdbc.url"));
+        dataSource.setUsername(env.getProperty("jdbc.username"));
+        dataSource.setPassword(env.getProperty("jdbc.password"));
+        dataSource.setInitialSize(env.getProperty("jdbc.pool.initialPoolSize", Integer.class));
+        dataSource.setMinIdle(env.getProperty("jdbc.pool.minPoolSize", Integer.class));
+        dataSource.setMaxActive(env.getProperty("jdbc.pool.maxPoolSize", Integer.class));
+		
+		return dataSource;
 	}
 
 	@Bean
@@ -31,5 +47,33 @@ public class MybatisConfig {
 		sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:com/isoftstone/cityinsight/cidev/provider/dao/mapper/maps/*Mapper.xml"));
 		return sqlSessionFactoryBean;
 	}
+	
+	/**
+     * 执行初始化脚本
+     */
+    @Value("classpath:/db/mysql/schema.sql")
+    private Resource schemaScript;
+    /**
+     * 执行初始化脚本
+     */
+    @Value("classpath:/db/mysql/data.sql")
+    private Resource initDataScript;
+    
+    @Bean
+    public DataSourceInitializer dataSourceInitializer(final DataSource dataSource) {
+        final DataSourceInitializer initializer = new DataSourceInitializer();
+        initializer.setDataSource(dataSource);
+        initializer.setDatabasePopulator(databasePopulator());
+        return initializer;
+    }
+    
+    private DatabasePopulator databasePopulator() {
+        final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+        populator.setSqlScriptEncoding("utf-8");
+        populator.addScript(schemaScript);
+        populator.addScript(initDataScript);
+        populator.setContinueOnError(true);
+        return populator;
+    }
 
 }
