@@ -21,7 +21,7 @@ import org.springframework.stereotype.Repository;
 import com.alibaba.druid.pool.DruidDataSource;
 
 @Configuration
-@MapperScan(basePackages={"com.isoftstone.cityinsight.cidev.provider.dao.mapper"}, annotationClass=Repository.class)
+@MapperScan(basePackages={"com.isoftstone.cityinsight.cidev.provider.dao.mapper"})
 public class MybatisConfig {
 	
 	@Bean
