@@ -43,7 +43,8 @@ public class MybatisConfig {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
 		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
-		sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:com/isoftstone/cityinsight/cidev/provider/dao/mapper/maps/*Mapper.xml"));
+//		sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:com/isoftstone/cityinsight/cidev/provider/dao/mapper/maps/*Mapper.xml"));
+		sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:/mybatis/*Mapper.xml"));
 		return sqlSessionFactoryBean;
 	}
 	

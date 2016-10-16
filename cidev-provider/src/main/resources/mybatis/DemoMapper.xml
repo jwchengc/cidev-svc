@@ -3,7 +3,7 @@
 <mapper namespace="com.isoftstone.cityinsight.cidev.provider.dao.mapper.DemoMapper" >
 
 	<select id="list" resultType="com.isoftstone.cityinsight.cidev.api.domain.Demo">
-		select * from demo
+		select id,name, created_At as createdAt , updated_At as updatedAt from demo
 	</select>
 	
 </mapper>
