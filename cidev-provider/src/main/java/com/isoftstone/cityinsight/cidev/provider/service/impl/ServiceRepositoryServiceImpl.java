@@ -69,6 +69,8 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 		return null;
 	}
 
+	
+	/******************self service begin *********************/
 	@Override
 	public List<Application> selectSelfOnlinedServices(String userId, String appType, Integer pageNum,
 			Integer pageSize) {
