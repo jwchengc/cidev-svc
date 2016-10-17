@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.github.pagehelper.Page;
@@ -18,6 +19,7 @@ import com.isoftstone.cityinsight.cidev.api.domain.FilesAssoc;
 import com.isoftstone.cityinsight.cidev.api.service.IServiceRepositoryService;
 import com.isoftstone.cityinsight.cidev.provider.dao.mapper.ApplicationMapper;
 
+@Service
 public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 
 	@Autowired

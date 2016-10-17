@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -13,6 +14,7 @@ import com.isoftstone.cityinsight.cidev.api.domain.Project;
 import com.isoftstone.cityinsight.cidev.api.service.IEditorService;
 import com.isoftstone.cityinsight.cidev.provider.dao.mapper.ProjectMapper;
 
+@Service
 public class EditorServiceImpl implements IEditorService {
 	
 	@Autowired

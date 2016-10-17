@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
 import com.github.pagehelper.Page;
@@ -15,6 +16,7 @@ import com.isoftstone.cityinsight.cidev.api.domain.File;
 import com.isoftstone.cityinsight.cidev.api.service.IComponentRepositoryService;
 import com.isoftstone.cityinsight.cidev.provider.dao.mapper.ApplicationMapper;
 
+@Service
 public class ComponentRepositoryServiceImpl implements IComponentRepositoryService {
 
 	@Autowired
