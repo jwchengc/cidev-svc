@@ -13,7 +13,7 @@ public class ApplicationVersion {
 	private String linkMan;
 	private String mobile;
 	private String address;
-	private Integer currentAuditStatus;
+	private Integer currentAuditStatus;   //0:待审核；1：审核通过并上线；2：审核失败
 	private Integer isOnlinedStatus;
 	private String createdBy;
 	private Date createdAt;
