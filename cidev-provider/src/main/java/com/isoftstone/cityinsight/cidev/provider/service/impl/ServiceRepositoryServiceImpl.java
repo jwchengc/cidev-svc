@@ -90,6 +90,10 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 		}
 		return null;
 	}
+	
+	public Map<String, Object> getAllSvcCategory() {
+		return applicationMapper.getAllSvcCategory();
+	}
 
 	
 	/******************self service begin *********************/

@@ -130,6 +130,12 @@
 		order by assoc.file_type, assoc.file_seq
 	</select>
 	
+	<select id="getAllSvcCategory" resultType="hashmap">
+		select svc_category_id as id,
+		       category_name as name
+		  from cibase_svc_category
+	</select>
+	
 	<!-- self services -->
 	<select id="selectSelfOnlinedServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
