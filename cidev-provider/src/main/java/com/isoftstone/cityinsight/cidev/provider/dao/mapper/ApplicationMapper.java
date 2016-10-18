@@ -11,6 +11,10 @@ public interface ApplicationMapper {
 	
 	List<Application> selectRecommendServices(Map<String, Object> params);
 	
+	List<Application> selectNewestServices(Map<String, Object> params);
+	
+	List<Application> selectPopularServices(Map<String, Object> params);
+	
 	List<Application> selectAllServices(Map<String, Object> params);
 	
 	Application selectServiceAndVersionDetail(Map<String, String> appIdAndVerId);

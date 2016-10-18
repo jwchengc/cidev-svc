@@ -33,6 +33,24 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 		applicationMapper.selectRecommendServices(params);
 		return page.getResult();
 	}
+	
+	public List<Application> getLatestServices(String userId, Integer pageNum,
+			Integer pageSize) {
+		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("appType", "cso");
+		applicationMapper.selectNewestServices(params);
+		return page.getResult();
+	}
+	
+	public List<Application> getPopularServices(String userId, Integer pageNum,
+			Integer pageSize) {
+		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("appType", "cso");
+		applicationMapper.selectPopularServices(params);
+		return page.getResult();
+	}
 
 	@Override
 	public List<Application> getAllServices(String serviceCategory, Integer pageNum, Integer pageSize) {
