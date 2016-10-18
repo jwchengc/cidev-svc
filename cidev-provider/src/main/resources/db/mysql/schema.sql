@@ -10,8 +10,8 @@ CREATE TABLE `demo` (
 CREATE TABLE `cidev_user` (
   `id` varchar(64) NOT NULL COMMENT '用户id',
   `name` varchar(64) NOT NULL COMMENT ' 用户名称',
-  `email` varchar(64) NOT NULL COMMENT '用户邮箱地址',
-  `phone` varchar(32) NOT NULL COMMENT '用户手机号',
+  `email` varchar(64) DEFAULT NULL COMMENT '用户邮箱地址',
+  `phone` varchar(32) DEFAULT NULL COMMENT '用户手机号',
   `created_at` datetime NOT NULL COMMENT '创建时间',
   `updated_at` datetime NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
