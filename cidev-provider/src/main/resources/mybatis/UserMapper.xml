@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.isoftstone.cityinsight.cidev.provider.dao.mapper.UserMapper" >
+	<insert id="create">
+		insert into cidev_user (id, name, email, phone, created_at, updated_at)
+		values (#{id}, #{name}, #{email}, #{phone}, #{createdAt}, #{updatedAt})
+	</insert>
+	<select id="getById" resultType="com.isoftstone.cityinsight.cidev.api.domain.User">
+		select
+			id, name, email, phone, created_at, updated_at
+		from cidev_user
+		where id = #{id}
+	</select>
+	
+	<select id="getByName" resultType="com.isoftstone.cityinsight.cidev.api.domain.User">
+		select
+			id, name, email, phone, created_at, updated_at
+		from cidev_user
+		where name = #{name}
+	</select>
+</mapper>

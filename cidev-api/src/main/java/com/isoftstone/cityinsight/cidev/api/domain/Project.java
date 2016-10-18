@@ -68,4 +68,5 @@ public class Project {
 	public void setSrcUrl(String srcUrl) {
 		this.srcUrl = srcUrl;
 	}
+
 }
