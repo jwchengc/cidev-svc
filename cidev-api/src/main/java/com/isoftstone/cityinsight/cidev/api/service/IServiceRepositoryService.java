@@ -9,7 +9,7 @@ public interface IServiceRepositoryService {
 
 	public List<Application> getRecommendServices(String userId, Integer pageNum, Integer pageSize);
 	
-	public List<Application> getAllServices(Integer pageNum, Integer pageSize);
+	public List<Application> getAllServices(String serviceCategory, Integer pageNum, Integer pageSize);
 	
 	public Map<String, Object> getServiceDetail(String appId, String versionId);
 	

@@ -71,7 +71,11 @@
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
 		       ver.mobile, ver.address, 
 		       file.file_url
-		  from (select * from cidev_application where app_type = #{appType} and is_onlined = 0) app
+		  from (select * from cidev_application where app_type = #{appType} and is_onlined = 0
+		       <if test="serviceCategory != null">
+		           and svc_category_id = #{serviceCategory}
+		       </if>
+		       ) app
 		  join (select * from cidev_application_version where is_onlined_version = 0) ver on app.app_id = ver.app_id
 		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0
 		  join cibase_files file on fileass.file_id = file.file_id	
