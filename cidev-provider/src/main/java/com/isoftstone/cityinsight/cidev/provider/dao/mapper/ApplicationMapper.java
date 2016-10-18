@@ -21,6 +21,8 @@ public interface ApplicationMapper {
 	
 	List<File> selectServiceFileInfosByVersionId(String versionId);
 	
+	Map<String, Object> getAllSvcCategory();
+	
 	//-----------my service begin -----------------//
 	
 	List<Application> selectSelfOnlinedServices(Map<String, Object> params);

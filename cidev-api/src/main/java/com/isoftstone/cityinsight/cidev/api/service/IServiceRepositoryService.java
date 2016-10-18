@@ -7,20 +7,22 @@ import com.isoftstone.cityinsight.cidev.api.domain.Application;
 
 public interface IServiceRepositoryService {
 
-	public List<Application> getRecommendServices(String userId, Integer pageNum, Integer pageSize);
+	List<Application> getRecommendServices(String userId, Integer pageNum, Integer pageSize);
 	
-	public List<Application> getLatestServices(String userId, Integer pageNum, Integer pageSize);
+	List<Application> getLatestServices(String userId, Integer pageNum, Integer pageSize);
 	
-	public List<Application> getPopularServices(String userId, Integer pageNum, Integer pageSize);
+	List<Application> getPopularServices(String userId, Integer pageNum, Integer pageSize);
 	
-	public List<Application> getAllServices(String serviceCategory, Integer pageNum, Integer pageSize);
+	List<Application> getAllServices(String serviceCategory, Integer pageNum, Integer pageSize);
 	
-	public Map<String, Object> getServiceDetail(String appId, String versionId);
+	Map<String, Object> getServiceDetail(String appId, String versionId);
+	
+	Map<String, Object> getAllSvcCategory();
 	
 	//-----------my service begin -----------------//
-	public List<Application> selectSelfOnlinedServices(String userId, String appType, Integer pageNum, Integer pageSize);
+	List<Application> selectSelfOnlinedServices(String userId, String appType, Integer pageNum, Integer pageSize);
 	
-	public List<Application> selectSelfNewestServices(String userId, String appType, Integer pageNum, Integer pageSize);
+	List<Application> selectSelfNewestServices(String userId, String appType, Integer pageNum, Integer pageSize);
 	
 	List<Application> selectSelfAppVersionList(String appId, Integer pageNum, Integer pageSize);
 	

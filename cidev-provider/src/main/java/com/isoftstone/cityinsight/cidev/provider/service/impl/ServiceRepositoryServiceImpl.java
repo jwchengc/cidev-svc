@@ -57,6 +57,7 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("appType", "cso");
+		serviceCategory = StringUtils.trimToNull(serviceCategory);
 		params.put("serviceCategory", serviceCategory);
 		applicationMapper.selectAllServices(params);
 		return page.getResult();
@@ -88,6 +89,10 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 			return result;
 		}
 		return null;
+	}
+	
+	public Map<String, Object> getAllSvcCategory() {
+		return applicationMapper.getAllSvcCategory();
 	}
 
 	
