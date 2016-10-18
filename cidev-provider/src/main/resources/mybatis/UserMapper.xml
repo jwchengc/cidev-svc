@@ -3,7 +3,7 @@
 <mapper namespace="com.isoftstone.cityinsight.cidev.provider.dao.mapper.UserMapper" >
 	<insert id="create">
 		insert into cidev_user (id, name, email, phone, created_at, updated_at)
-		values (#{id}, #{name}, #{email}, #{phone}, #{createdAt}, #{updatedAt})
+		values (#{id}, #{name}, #{email}, #{phone}, now(), now())
 	</insert>
 	<select id="getById" resultType="com.isoftstone.cityinsight.cidev.api.domain.User">
 		select
