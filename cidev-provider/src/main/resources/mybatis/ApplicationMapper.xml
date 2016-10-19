@@ -55,8 +55,8 @@
 	
 	<select id="selectRecommendServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
-		       ver.version_id, ver.app_version, ver.description
-		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, 
 		       file.file_url
 		  from (select * from cidev_application where app_id in (select app_id from cidev_recommend_apps) and app_type = #{appType}) app
@@ -67,8 +67,8 @@
 	
 	<select id="selectNewestServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
-		       ver.version_id, ver.app_version, ver.description
-		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, 
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType}) app
@@ -84,8 +84,8 @@
 	
 	<select id="selectPopularServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
-		       ver.version_id, ver.app_version, ver.description
-		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, 
 		       file.file_url
 		  from (select * from cidev_application where app_id in (select app_id from cidev_popular_apps) and app_type = #{appType}) app
@@ -96,8 +96,8 @@
 	
 	<select id="selectAllServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
-		       ver.version_id, ver.app_version, ver.description
-		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, 
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and is_onlined = 0
@@ -113,8 +113,8 @@
 	
 	<select id="selectServiceAndVersionDetail" resultMap="Application" parameterType="hashmap" >
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.created_at,
-		       ver.version_id, ver.app_version, ver.description
-		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address
 		  from (select * from cidev_application where app_id = #{appId}) app
 		  join (select * from cidev_application_version where version_id = #{versionId}) ver on app.app_id = ver.app_id
@@ -139,8 +139,8 @@
 	<!-- self services -->
 	<select id="selectSelfOnlinedServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
-		       ver.version_id, ver.app_version, ver.description
-		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, 
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId} and is_onlined = 0) app
@@ -151,8 +151,8 @@
 	
 	<select id="selectSelfNewestServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
-		       ver.version_id, ver.app_version, ver.description
-		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, 
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId}) app
@@ -167,8 +167,8 @@
 	
 	<select id="selectSelfAppVersionList" resultMap="Application" parameterType="string">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
-		       ver.version_id, ver.app_version, ver.description
-		       ver.version_info, ver.keyword, ver.copyright, ver.link_man
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address
 		  from (select * from cidev_application where app_id = #{appId}) app
 		  join (select * from cidev_application_version where app_id = #{appId}) ver 
