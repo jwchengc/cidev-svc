@@ -1,9 +1,14 @@
 package com.isoftstone.cityinsight.cidev.api.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class File {
+public class File implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7859832748010112052L;
 	private String fileId;
 	private String fileName;
 	private String filePath;

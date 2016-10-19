@@ -1,8 +1,13 @@
 package com.isoftstone.cityinsight.cidev.api.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ApplicationVersion {
+public class ApplicationVersion implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7156160001809618926L;
 	private String versionId;
 	private String appId;
 	private String appVersion;

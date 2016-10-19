@@ -1,6 +1,12 @@
 package com.isoftstone.cityinsight.cidev.api.domain;
 
-public class FilesAssoc {
+import java.io.Serializable;
+
+public class FilesAssoc implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5831445000830384266L;
 	private String fileAssocId;
 	private String versionId;
 	private String fileId;
