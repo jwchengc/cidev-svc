@@ -107,6 +107,27 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 		applicationMapper.selectSelfOnlinedServices(params);
 		return page.getResult();
 	}
+	
+	
+	public List<Application> selectSelfOnAuditedServices(String userId, String appType, Integer pageNum,
+			Integer pageSize) {
+		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("appType", appType);
+		params.put("userId", userId);
+		applicationMapper.selectSelfOnAuditedServices(params);
+		return page.getResult();
+	}
+	
+	public List<Application> selectSelfUnAuditedServices(String userId, String appType, Integer pageNum,
+			Integer pageSize) {
+		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("appType", appType);
+		params.put("userId", userId);
+		applicationMapper.selectSelfUnAuditedServices(params);
+		return page.getResult();
+	}
 
 	@Override
 	public List<Application> selectSelfNewestServices(String userId, String appType, Integer pageNum,

@@ -150,6 +150,32 @@
 		  join cibase_files file on fileass.file_id = file.file_id	
 	</select>
 	
+	<select id="selectSelfOnAuditedServices" resultMap="Application" parameterType="hashmap">
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
+		       ver.mobile, ver.address, 
+		       ver.current_audit_status,
+		       file.file_url
+		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId} and is_onlined = 0) app
+		  join (select * from cidev_application_version where current_audit_status != 2) ver on app.app_id = ver.app_id
+		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0
+		  join cibase_files file on fileass.file_id = file.file_id	
+	</select>
+	
+	<select id="selectSelfUnAuditedServices" resultMap="Application" parameterType="hashmap">
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
+		       ver.mobile, ver.address, 
+		       ver.current_audit_status,
+		       file.file_url
+		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId} and is_onlined = 0) app
+		  join (select * from cidev_application_version where current_audit_status = 2) ver on app.app_id = ver.app_id
+		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0
+		  join cibase_files file on fileass.file_id = file.file_id	
+	</select>
+	
 	<select id="selectSelfNewestServices" resultMap="Application" parameterType="hashmap">
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
@@ -172,6 +198,7 @@
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.current_audit_status,
+		       ver.created_at,
 		       ver.mobile, ver.address
 		  from (select * from cidev_application where app_id = #{appId}) app
 		  join (select * from cidev_application_version where app_id = #{appId}) ver 

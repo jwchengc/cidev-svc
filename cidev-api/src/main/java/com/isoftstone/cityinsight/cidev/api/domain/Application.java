@@ -15,8 +15,8 @@ public class Application extends ApplicationVersion implements Serializable{
     private String appName;
     private String appType;
     private String svcCategoryId;
-    private Date createdAt;
-    private String createdBy;
+//    private Date createdAt;
+//    private String createdBy;
     
     //非持久化属性
     private String fileUrl;
@@ -53,19 +53,19 @@ public class Application extends ApplicationVersion implements Serializable{
         this.svcCategoryId = svcCategoryId;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
+//    public Date getCreatedAt() {
+//        return createdAt;
+//    }
+//
+//    public void setCreatedAt(Date createdAt) {
+//        this.createdAt = createdAt;
+//    }
+//
+//    public String getCreatedBy() {
+//        return createdBy;
+//    }
+//
+//    public void setCreatedBy(String createdBy) {
+//        this.createdBy = createdBy;
+//    }
 }

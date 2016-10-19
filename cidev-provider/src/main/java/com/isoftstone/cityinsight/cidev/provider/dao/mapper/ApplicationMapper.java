@@ -27,6 +27,10 @@ public interface ApplicationMapper {
 	
 	List<Application> selectSelfOnlinedServices(Map<String, Object> params);
 	
+	List<Application> selectSelfOnAuditedServices(Map<String, Object> params);
+	
+	List<Application> selectSelfUnAuditedServices(Map<String, Object> params);
+	
 	List<Application> selectSelfNewestServices(Map<String, Object> params);
 	
 	List<Application> selectSelfAppVersionList(String appId);

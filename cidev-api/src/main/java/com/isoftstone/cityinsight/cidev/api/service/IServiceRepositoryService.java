@@ -22,6 +22,10 @@ public interface IServiceRepositoryService {
 	//-----------my service begin -----------------//
 	List<Application> selectSelfOnlinedServices(String userId, String appType, Integer pageNum, Integer pageSize);
 	
+	List<Application> selectSelfOnAuditedServices(String userId, String appType, Integer pageNum,Integer pageSize);
+	
+	List<Application> selectSelfUnAuditedServices(String userId, String appType, Integer pageNum,Integer pageSize);
+	
 	List<Application> selectSelfNewestServices(String userId, String appType, Integer pageNum, Integer pageSize);
 	
 	List<Application> selectSelfAppVersionList(String appId, Integer pageNum, Integer pageSize);
