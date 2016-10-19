@@ -142,6 +142,7 @@
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, 
+		       ver.current_audit_status,
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId} and is_onlined = 0) app
 		  join (select * from cidev_application_version where is_onlined_version = 0) ver on app.app_id = ver.app_id
@@ -154,6 +155,7 @@
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, 
+		       ver.current_audit_status,
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId}) app
 		  join (select * from cidev_application_version 
@@ -169,6 +171,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
+		       ver.current_audit_status,
 		       ver.mobile, ver.address
 		  from (select * from cidev_application where app_id = #{appId}) app
 		  join (select * from cidev_application_version where app_id = #{appId}) ver 
