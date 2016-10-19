@@ -21,7 +21,7 @@ public interface ApplicationMapper {
 	
 	List<File> selectServiceFileInfosByVersionId(String versionId);
 	
-	Map<String, Object> getAllSvcCategory();
+	List<Map<String, Object>> getAllSvcCategory();
 	
 	//-----------my service begin -----------------//
 	

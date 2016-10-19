@@ -121,9 +121,9 @@
 	</select>
 	
 	<select id="selectServiceFileInfosByVersionId" parameterType="string" resultMap="File" >
-		select assoc.file_id, assoc.file_name, assoc.file_path, assoc.file_size
-		       , assoc.file_suffix, assoc.file_content_type, assoc.file_url
-		       , assoc.created_by, assoc.created_at, file.file_type, file.file_seq
+		select assoc.file_id, file.file_name, file.file_path, file.file_size
+		       , file.file_suffix, file.file_content_type, file.file_url
+		       , file.created_by, file.created_at, assoc.file_type, assoc.file_seq
 		  from (select * from cidev_base_files_assoc where version_id = #{versionId}) assoc
 		  join cibase_files file
 		    on assoc.file_id = file.file_id

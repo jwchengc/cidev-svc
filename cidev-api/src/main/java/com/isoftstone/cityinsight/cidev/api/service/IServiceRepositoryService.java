@@ -17,7 +17,7 @@ public interface IServiceRepositoryService {
 	
 	Map<String, Object> getServiceDetail(String appId, String versionId);
 	
-	Map<String, Object> getAllSvcCategory();
+	List<Map<String, Object>> getAllSvcCategory();
 	
 	//-----------my service begin -----------------//
 	List<Application> selectSelfOnlinedServices(String userId, String appType, Integer pageNum, Integer pageSize);

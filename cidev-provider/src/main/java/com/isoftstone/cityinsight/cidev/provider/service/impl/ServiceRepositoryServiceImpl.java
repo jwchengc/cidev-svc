@@ -8,9 +8,9 @@ import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.alibaba.dubbo.config.annotation.Service;
 
 import com.alibaba.dubbo.common.utils.CollectionUtils;
+import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.isoftstone.cityinsight.cidev.api.domain.Application;
@@ -91,7 +91,7 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 		return null;
 	}
 	
-	public Map<String, Object> getAllSvcCategory() {
+	public List<Map<String, Object>> getAllSvcCategory() {
 		return applicationMapper.getAllSvcCategory();
 	}
 
