@@ -1,11 +1,11 @@
-IMAGE_PREFIX = registry.isspaas.com/beehive2/
+IMAGE_PREFIX = registry.isspaas.com/cityinsight/
 COMPONENT = svc-builder
 ifndef BUILD_TAG
   BUILD_TAG = latest
 endif
 IMAGE = $(IMAGE_PREFIX)$(COMPONENT):$(BUILD_TAG)
 ifndef KUBE_OPS
-  KUBE_OPS = --server=https://api.devcaas.com --namespace=beehive2
+  KUBE_OPS = --server=http://10.16.117.160:8080 --namespace=cityinsight
 endif
 
 clean:
