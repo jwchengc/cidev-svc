@@ -1,5 +1,5 @@
 IMAGE_PREFIX = registry.isspaas.com/cityinsight/
-COMPONENT = svc-builder
+COMPONENT = cidev-svc
 ifndef BUILD_TAG
   BUILD_TAG = latest
 endif
@@ -24,7 +24,7 @@ push:
 	docker push $(IMAGE)
 
 run:
-	docker run --rm -it -e spring.profiles.active=application -e DUBBO_REGISTRY_ADDRESS=kube://devcaas.com:12181 -e DUBBO_REGISTRY_REGISTER=true -e DUBBO_PROTOCOL_KUBE_HOST=devcaas.com -e DUBBO_PROTOCOL_KUBE_PORT=16888 -p 8888:8888 $(IMAGE)
+	docker run --rm -it -e spring.profiles.active=application -e DUBBO_REGISTRY_ADDRESS=kube://10.16.117.20:2181 -e DUBBO_REGISTRY_REGISTER=true -e DUBBO_PROTOCOL_KUBE_HOST=10.16.113.42 -e DUBBO_PROTOCOL_KUBE_PORT=18888 -p 18888:8888 $(IMAGE)
 
 deploy:
 	kubectl create -f kube-rc.yaml $(KUBE_OPS)

@@ -1,16 +1,21 @@
 package dubbo.spring.javaconfig;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import com.isoftstone.dubbo.registry.KubeRegistry;
 
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.ProviderConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 @PropertySource(value={"classpath:/application.properties", "classpath:/dubbo.properties"})
@@ -47,7 +52,15 @@ public class DubboConfiguration {
 	
 	@Bean
 	public ProtocolConfig protocolConfig() {
+		Map<String,String> param = new HashMap<String,String>();
+		if(StringUtils.isNotBlank(env.getProperty("DUBBO_PROTOCOL_KUBE_HOST"))) {
+			param.put(KubeRegistry.KUBE_HOST, env.getProperty("DUBBO_PROTOCOL_KUBE_HOST"));
+		}
+		if(StringUtils.isNotBlank(env.getProperty("DUBBO_PROTOCOL_KUBE_PORT"))) {
+			param.put(KubeRegistry.KUBE_PORT, env.getProperty("DUBBO_PROTOCOL_KUBE_PORT"));
+		}
 		ProtocolConfig protoCfg = new ProtocolConfig();
+		protoCfg.setParameters(param);
 		protoCfg.setName(env.getProperty("DUBBO_PROTOCOL_NAME"));
 		protoCfg.setPort(Integer.parseInt(env.getProperty("DUBBO_PROTOCOL_PORT")));
 		return protoCfg;
