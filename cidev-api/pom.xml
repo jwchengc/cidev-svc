@@ -19,5 +19,17 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<repository>
+			<id>nexus-snapshots</id>
+			<name>Local Nexus Repository</name>
+			<url>http://10.9.80.220:8081/nexus/content/repositories/beehive/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Local Nexus Repository</name>
+			<url>http://10.9.80.220:8081/nexus/content/repositories/beehive-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 </project>
