@@ -17,9 +17,14 @@ spec:
           imagePullPolicy: Always
           env:
             - name: DUBBO_REGISTRY_ADDRESS
-              value: "kube://zookeeper:22181"
+              value: "kube://10.16.117.161:22181"
             - name: DUBBO_REGISTRY_REGISTER
               value: "true"
+            - name: DUBBO_PROTOCOL_KUBE_HOST
+              value: "10.16.117.161"
+            - name: DUBBO_PROTOCOL_KUBE_port
+              value: "31888"
+
           ports:
             - containerPort: 8888
 

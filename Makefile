@@ -24,7 +24,7 @@ push:
 	docker push $(IMAGE)
 
 run:
-	docker run --rm -it -e spring.profiles.active=application -e DUBBO_REGISTRY_ADDRESS=kube://10.16.117.20:2181 -e DUBBO_REGISTRY_REGISTER=true -e DUBBO_PROTOCOL_KUBE_HOST=10.16.113.42 -e DUBBO_PROTOCOL_KUBE_PORT=18888 -p 18888:8888 $(IMAGE)
+	docker run --rm -it -e spring.profiles.active=application -e DUBBO_REGISTRY_ADDRESS=kube://10.16.117.20:2181 -e DUBBO_REGISTRY_REGISTER=true -e DUBBO_PROTOCOL_KUBE_HOST=10.16.117.204 -e DUBBO_PROTOCOL_KUBE_PORT=31888 -p 31888:8888 $(IMAGE)
 
 deploy:
 	kubectl create -f kube-rc.yaml $(KUBE_OPS)
