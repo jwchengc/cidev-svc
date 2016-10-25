@@ -79,7 +79,8 @@
 		                     )
 		        ) ver on app.app_id = ver.app_id
 		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0
-		  join cibase_files file on fileass.file_id = file.file_id	
+		  join cibase_files file on fileass.file_id = file.file_id
+		  order by ver.created_at DESC
 	</select>
 	
 	<select id="selectPopularServices" resultMap="Application" parameterType="hashmap">
@@ -190,7 +191,8 @@
 		                     )
 		        ) ver on app.app_id = ver.app_id
 		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0
-		  join cibase_files file on fileass.file_id = file.file_id	
+		  join cibase_files file on fileass.file_id = file.file_id
+		  order by ver.created_at DESC
 	</select>
 	
 	<select id="selectSelfAppVersionList" resultMap="Application" parameterType="string">
