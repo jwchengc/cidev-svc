@@ -126,6 +126,11 @@
 			<version>1.2.7</version>
 		</dependency>
 		<dependency>
+			<groupId>com.isoftstone.dubo.registry</groupId>
+			<artifactId>kube-registry</artifactId>
+			<version>${alibaba_dubbo}</version>
+		</dependency>
+		<dependency>
 			<groupId>com.isoftstone.cityinsight</groupId>
 			<artifactId>cidev-api</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
