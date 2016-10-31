@@ -22,7 +22,21 @@ public class ApplicationVersion implements Serializable {
 	private Integer isOnlinedStatus;
 	private String createdBy;
 	private Date createdAt;
+    private Integer publishedChannel;
+    private String coChannelId;
 	
+	public Integer getPublishedChannel() {
+		return publishedChannel;
+	}
+	public void setPublishedChannel(Integer publishedChannel) {
+		this.publishedChannel = publishedChannel;
+	}
+	public String getCoChannelId() {
+		return coChannelId;
+	}
+	public void setCoChannelId(String coChannelId) {
+		this.coChannelId = coChannelId;
+	}
 	public String getVersionId() {
 		return versionId;
 	}

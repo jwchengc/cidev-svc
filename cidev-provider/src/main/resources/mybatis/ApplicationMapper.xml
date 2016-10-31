@@ -13,6 +13,8 @@
 		<result property="linkMan" column="link_man" jdbcType="VARCHAR" />
 		<result property="mobile" column="mobile" jdbcType="VARCHAR" />
 		<result property="address" column="address" jdbcType="VARCHAR" />
+		<result property="publishedChannel" column="published_channel" jdbcType="INTEGER" />
+		<result property="coChannelId" column="co_channel_id" jdbcType="VARCHAR" />
 		<result property="currentAuditStatus" column="current_audit_status" jdbcType="INTEGER" />
 		<result property="createdBy" column="created_by" jdbcType="VARCHAR" />
 		<result property="createdAt" column="created_at" jdbcType="TIMESTAMP" />
@@ -23,7 +25,6 @@
 		<result property="appName" column="app_name" jdbcType="VARCHAR" />
 		<result property="appType" column="app_type" jdbcType="VARCHAR" />
 		<result property="svcCategoryId" column="svc_category_id" jdbcType="TIMESTAMP" />
-		<result property="publishedChannel" column="published_channel" jdbcType="INTEGER" />
 		<result property="createdBy" column="created_by" jdbcType="VARCHAR" />
 		<result property="createdAt" column="created_at" jdbcType="TIMESTAMP" />
 		
@@ -55,10 +56,10 @@
 	</resultMap>
 	
 	<select id="selectRecommendServices" resultMap="Application" parameterType="hashmap">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address, 
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id,
 		       file.file_url
 		  from (select * from cidev_application where app_id in (select app_id from cidev_recommend_apps) and app_type = #{appType}) app
 		  join (select * from cidev_application_version where is_onlined_version = 0) ver on app.app_id = ver.app_id
@@ -70,7 +71,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address, 
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType}) app
 		  join (select * from cidev_application_version 
@@ -88,7 +89,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address, 
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
 		       file.file_url
 		  from (select * from cidev_application where app_id in (select app_id from cidev_popular_apps) and app_type = #{appType}) app
 		  join (select * from cidev_application_version where is_onlined_version = 0) ver on app.app_id = ver.app_id
@@ -100,7 +101,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address, 
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and is_onlined = 0
 		       <if test="serviceCategory != null">
@@ -117,7 +118,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.created_at, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id
 		  from (select * from cidev_application where app_id = #{appId}) app
 		  join (select * from cidev_application_version where version_id = #{versionId}) ver on app.app_id = ver.app_id
 	</select>
@@ -146,7 +147,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address, 
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
 		       ver.current_audit_status,
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId} and is_onlined = 0) app
@@ -159,7 +160,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address, 
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
 		       ver.current_audit_status,
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId} and is_onlined = 0) app
@@ -172,7 +173,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address, 
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
 		       ver.current_audit_status,
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId} and is_onlined = 0) app
@@ -185,7 +186,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.mobile, ver.address, 
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
 		       ver.current_audit_status,
 		       file.file_url
 		  from (select * from cidev_application where app_type = #{appType} and created_by = #{userId}) app
@@ -203,7 +204,7 @@
 		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
-		       ver.current_audit_status,
+		       ver.current_audit_status, ver.published_channel, ver.co_channel_id,
 		       ver.created_at,
 		       ver.mobile, ver.address
 		  from (select * from cidev_application where app_id = #{appId}) app

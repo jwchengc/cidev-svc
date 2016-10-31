@@ -14,20 +14,11 @@ public class Application extends ApplicationVersion implements Serializable{
     private String appName;
     private String appType;
     private String svcCategoryId;
-    private Integer publishedChannel;
 //    private Date createdAt;
 //    private String createdBy;
     
     //非持久化属性
     private String fileUrl;
-
-    public Integer getPublishedChannel() {
-		return publishedChannel;
-	}
-
-	public void setPublishedChannel(Integer publishedChannel) {
-		this.publishedChannel = publishedChannel;
-	}
 
 	public String getFileUrl() {
 		return fileUrl;
