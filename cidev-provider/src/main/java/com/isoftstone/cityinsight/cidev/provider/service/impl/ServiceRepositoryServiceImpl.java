@@ -91,8 +91,8 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 		return null;
 	}
 	
-	public List<Map<String, Object>> getAllSvcCategory() {
-		return applicationMapper.getAllSvcCategory();
+	public List<Map<String, Object>> getAllSvcCategory(Map<String, Object> params) {
+		return applicationMapper.getAllSvcCategory(params);
 	}
 
 	

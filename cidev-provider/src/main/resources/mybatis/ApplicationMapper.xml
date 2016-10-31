@@ -131,10 +131,13 @@
 		order by assoc.file_type, assoc.file_seq
 	</select>
 	
-	<select id="getAllSvcCategory" resultType="hashmap">
+	<select id="getAllSvcCategory" resultType="hashmap" parameterType="hashmap">
 		select svc_category_id as id,
 		       category_name as name
 		  from cibase_svc_category
+		  <if test="serviceType != null">
+		 where service_type = #{serviceType}
+		  </if>
 	</select>
 	
 	<!-- self services -->
