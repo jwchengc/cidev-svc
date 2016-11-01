@@ -68,7 +68,7 @@
 	</select>
 	
 	<select id="selectNewestServices" resultMap="Application" parameterType="hashmap">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
@@ -86,7 +86,7 @@
 	</select>
 	
 	<select id="selectPopularServices" resultMap="Application" parameterType="hashmap">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
@@ -98,7 +98,7 @@
 	</select>
 	
 	<select id="selectAllServices" resultMap="Application" parameterType="hashmap">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
@@ -115,7 +115,7 @@
 	</select>
 	
 	<select id="selectServiceAndVersionDetail" resultMap="Application" parameterType="hashmap" >
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.created_at, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.created_at,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id
@@ -144,7 +144,7 @@
 	
 	<!-- self services -->
 	<select id="selectSelfOnlinedServices" resultMap="Application" parameterType="hashmap">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
@@ -157,7 +157,7 @@
 	</select>
 	
 	<select id="selectSelfOnAuditedServices" resultMap="Application" parameterType="hashmap">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
@@ -170,7 +170,7 @@
 	</select>
 	
 	<select id="selectSelfUnAuditedServices" resultMap="Application" parameterType="hashmap">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
@@ -183,7 +183,7 @@
 	</select>
 	
 	<select id="selectSelfNewestServices" resultMap="Application" parameterType="hashmap">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
@@ -201,7 +201,7 @@
 	</select>
 	
 	<select id="selectSelfAppVersionList" resultMap="Application" parameterType="string">
-		select app.app_id, app.app_name, app.app_type, app.svc_category_id, app.published_channel,
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
 		       ver.version_id, ver.app_version, ver.description,
 		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
 		       ver.current_audit_status, ver.published_channel, ver.co_channel_id,
