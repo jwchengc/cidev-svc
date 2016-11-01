@@ -14,10 +14,13 @@
 		<result property="srcUrl" column="file_url" jdbcType="VARCHAR" />
 	</resultMap>
 	
-	<select id="selectProjectsByOwnerId" resultMap="project" parameterType="string" >
+	<select id="selectProjectsByOwnerId" resultMap="project" parameterType="hashmap" >
 		select p.project_id, p.project_name, p.project_type, p.description,
 		       p.owner_id, p.created_at, f.file_url
-		  from (select * form cidev_project where owner_id = #{ownerId}) p
+		  from (select * form cidev_project where owner_id = #{ownerId} 
+		        <if test="project_type != null">
+		        	and project_type = #{projectType}
+		        </if>) p
 		  join cidev_base_files_assoc a on p.project_id = a.version_id and a.file_type = 2
 		  join cibase_files f on a.file_id = f.file_id
 		order by p.created_at DESC
