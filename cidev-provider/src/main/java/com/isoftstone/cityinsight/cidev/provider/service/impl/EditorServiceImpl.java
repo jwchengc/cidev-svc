@@ -1,11 +1,14 @@
 package com.isoftstone.cityinsight.cidev.provider.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.alibaba.dubbo.config.annotation.Service;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.isoftstone.cityinsight.cidev.api.domain.File;
@@ -21,9 +24,12 @@ public class EditorServiceImpl implements IEditorService {
 	private ProjectMapper projectMapper;
 
 	@Override
-	public List<Project> selectProjectsByUserId(String userId, Integer pageNum, Integer pageSize) {
+	public List<Project> selectProjectsByUserId(String userId, String projectType, Integer pageNum, Integer pageSize) {
 		Page<Project> page = PageHelper.startPage(pageNum, pageSize);
-		projectMapper.selectProjectsByOwnerId(userId);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("ownerId", userId);
+		params.put("projectType", StringUtils.trimToNull(projectType));
+		projectMapper.selectProjectsByOwnerId(params);
 		return page.getResult();
 	}
 
