@@ -57,6 +57,7 @@ public class DubboConfiguration {
 		if(StringUtils.isNotBlank(env.getProperty("DUBBO_PROTOCOL_KUBE_HOST"))) {
 			param.put(KubeRegistry.KUBE_HOST, env.getProperty("DUBBO_PROTOCOL_KUBE_HOST"));
 		}
+		System.out.println(env.getProperty("DUBBO_PROTOCOL_KUBE_PORT"));
 		if(StringUtils.isNotBlank(env.getProperty("DUBBO_PROTOCOL_KUBE_PORT"))) {
 			param.put(KubeRegistry.KUBE_PORT, env.getProperty("DUBBO_PROTOCOL_KUBE_PORT"));
 		}
