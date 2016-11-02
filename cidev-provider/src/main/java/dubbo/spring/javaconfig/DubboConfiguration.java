@@ -54,11 +54,9 @@ public class DubboConfiguration {
 	@Bean
 	public ProtocolConfig protocolConfig() {
 		Map<String,String> param = new HashMap<String,String>();
-		System.out.println("---->"+env.getProperty("DUBBO_PROTOCOL_KUBE_HOST"));
 		if(StringUtils.isNotBlank(env.getProperty("DUBBO_PROTOCOL_KUBE_HOST"))) {
 			param.put(KubeRegistry.KUBE_HOST, env.getProperty("DUBBO_PROTOCOL_KUBE_HOST"));
 		}
-		System.out.println("---->"+env.getProperty("DUBBO_PROTOCOL_KUBE_PORT"));
 		if(StringUtils.isNotBlank(env.getProperty("DUBBO_PROTOCOL_KUBE_PORT"))) {
 			param.put(KubeRegistry.KUBE_PORT, env.getProperty("DUBBO_PROTOCOL_KUBE_PORT"));
 		}
