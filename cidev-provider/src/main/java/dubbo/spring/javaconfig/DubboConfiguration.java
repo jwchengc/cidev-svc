@@ -47,6 +47,7 @@ public class DubboConfiguration {
 		RegistryConfig registryConfig = new RegistryConfig();
 		registryConfig.setAddress(env.getProperty("DUBBO_REGISTRY_ADDRESS"));
 		registryConfig.setRegister(Boolean.parseBoolean(env.getProperty("DUBBO_REGISTRY_REGISTER")));
+		registryConfig.setGroup(env.getProperty("DUBBO_REGISTRY_GROUP"));
 		return registryConfig;
 	}
 	
