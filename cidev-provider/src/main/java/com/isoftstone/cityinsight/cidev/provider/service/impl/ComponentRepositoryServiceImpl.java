@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.dubbo.config.annotation.Service;
 
@@ -30,12 +31,30 @@ public class ComponentRepositoryServiceImpl implements IComponentRepositoryServi
 		applicationMapper.selectRecommendServices(params);
 		return page.getResult();
 	}
-
-	@Override
-	public List<Application> getAllComponents(Integer pageNum, Integer pageSize) {
+	
+	public List<Application> getPopularComponents(Integer pageNum, Integer pageSize) {
 		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("appType", "co");
+		applicationMapper.selectPopularServices(params);
+		return page.getResult();
+	}
+	
+	public List<Application> getLatestComponents(Integer pageNum, Integer pageSize) {
+		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("appType", "co");
+		applicationMapper.selectNewestServices(params);
+		return page.getResult();
+	}
+
+	@Override
+	public List<Application> getAllComponents(String serviceCategory, Integer pageNum, Integer pageSize) {
+		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("appType", "co");
+		serviceCategory = StringUtils.trimToNull(serviceCategory);
+		params.put("serviceCategory", serviceCategory);
 		applicationMapper.selectAllServices(params);
 		return page.getResult();
 	}
