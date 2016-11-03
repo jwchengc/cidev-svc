@@ -71,7 +71,7 @@ public class ComponentRepositoryServiceImpl implements IComponentRepositoryServi
 			if (CollectionUtils.isNotEmpty(files)) {
 				List<File> shotcuts = new ArrayList<File>();
 				for (File file : files) {
-					if (file.getFileType() == 0) {
+					if (file.getFileType() == 0 && file.getFileSeq() == 1) { //详情中的图标
 						result.put("icon", file);
 					} else if (file.getFileType() == 1) {
 						shotcuts.add(file);
