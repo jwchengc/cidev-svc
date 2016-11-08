@@ -34,16 +34,29 @@ public class EditorServiceImpl implements IEditorService {
 	}
 
 	@Override
-	public void saveProjectInfo(Project project, File file) {
+	public void saveProjectInfo(Project project) {
 		projectMapper.save(project);
-		projectMapper.saveProjectFile(file);
-		FilesAssoc filesAssoc = new FilesAssoc();
-		filesAssoc.setFileAssocId(UUID.randomUUID().toString());
-		filesAssoc.setVersionId(project.getProjectId());
-		filesAssoc.setFileId(file.getFileId());
-		filesAssoc.setFileSeq(1);
-		filesAssoc.setFileType(2);
-		projectMapper.saveProjectFileAssoc(filesAssoc);
+	}
+	
+	@Override
+	public void syncProjectInfo(Boolean isUpdated, String projectId, File file) {
+		if (isUpdated) {
+			projectMapper.delFileByProjectId(projectId);
+			projectMapper.saveProjectFile(file);
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("fileId", file.getFileId());
+			params.put("projectId", projectId);
+			projectMapper.updateFileAssocInfo(params);
+		} else {
+			projectMapper.saveProjectFile(file);
+			FilesAssoc filesAssoc = new FilesAssoc();
+			filesAssoc.setFileAssocId(UUID.randomUUID().toString());
+			filesAssoc.setVersionId(projectId);
+			filesAssoc.setFileId(file.getFileId());
+			filesAssoc.setFileSeq(1);
+			filesAssoc.setFileType(2);
+			projectMapper.saveProjectFileAssoc(filesAssoc);
+		}
 	}
 
 }

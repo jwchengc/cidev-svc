@@ -16,4 +16,8 @@ public interface ProjectMapper {
 	void saveProjectFile(File file);
 	
 	void saveProjectFileAssoc(FilesAssoc filesAssoc);
+	
+	void delFileByProjectId(String projectId);
+	
+	void updateFileAssocInfo(Map<String, Object> params);
 }

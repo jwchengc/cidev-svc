@@ -40,4 +40,16 @@
 		insert into cidev_base_files_assoc(file_assoc_id, version_id, file_id, file_type, file_seq) 
 		values(#{fileAssocId}, #{versionId}, #{fileId}, #{fileType}, #{fileSeq})
 	</insert>
+	
+	<delete id="delFileByProjectId" parameterType="string">
+	    delete from cibase_files where file_id in (select file_id from cidev_base_files_assoc where version_id=#{projectId} and file_type = 2 and file_seq = 1)
+	</delete>
+	
+	<update id="updateFileAssocInfo" parameterType="hashmap">
+	    update cidev_base_files_assoc
+	       set file_id = #{fileId}
+	     where version_id = #{projectId}
+	       and file_type = 2
+	       and file_seq = 1
+	</update>
 </mapper>
