@@ -3,76 +3,76 @@
 /* Created on:     2016/11/7 9:53:25                            */
 /*==============================================================*/
 
-DROP DATABASE IF EXISTS cityinsight;
+--DROP DATABASE IF EXISTS cityinsight;
 
 CREATE DATABASE cityinsight default character set utf8 COLLATE utf8_general_ci;
 
 use cityinsight;
 
 
-drop table if exists career;
-
-drop table if exists cibase_education;
-
-drop table if exists cibase_files;
-
-drop table if exists cibase_location;
-
-drop table if exists cibase_svc_category;
-
-drop table if exists cibase_svc_category_attr;
-
-drop table if exists cibase_svc_category_type;
-
-drop table if exists cibase_user;
-
-drop table if exists cibase_userlables;
-
-drop table if exists cidev_application;
-
-drop table if exists cidev_application_version;
-
-drop table if exists cidev_application_version_audit;
-
-drop table if exists cidev_base_files_assoc;
-
-drop table if exists cidev_co_channel;
-
-drop table if exists cidev_co_market_category;
-
-drop table if exists cidev_co_order;
-
-drop table if exists cidev_co_tnt;
-
-drop table if exists cidev_my_purchase_apps;
-
-drop table if exists cidev_popular_apps;
-
-drop table if exists cidev_project;
-
-drop table if exists cidev_recommend_apps;
-
-drop table if exists cidev_type_info;
-
-drop table if exists cimobi_customescenario_service_assoc;
-
-drop table if exists cimobi_myfootprint;
-
-drop table if exists cimobi_recommend_services;
-
-drop table if exists cimobi_svc;
-
-drop table if exists cimobi_svc_avgscore;
-
-drop table if exists cimobi_svc_invoke;
-
-drop table if exists cimobi_svc_remark;
-
-drop table if exists cimobi_svc_type;
-
-drop table if exists cimobi_usercustom_scenario;
-
-drop table if exists comobi_svc_loc_assoc;
+--drop table if exists career;
+--
+--drop table if exists cibase_education;
+--
+--drop table if exists cibase_files;
+--
+--drop table if exists cibase_location;
+--
+--drop table if exists cibase_svc_category;
+--
+--drop table if exists cibase_svc_category_attr;
+--
+--drop table if exists cibase_svc_category_type;
+--
+--drop table if exists cibase_user;
+--
+--drop table if exists cibase_userlables;
+--
+--drop table if exists cidev_application;
+--
+--drop table if exists cidev_application_version;
+--
+--drop table if exists cidev_application_version_audit;
+--
+--drop table if exists cidev_base_files_assoc;
+--
+--drop table if exists cidev_co_channel;
+--
+--drop table if exists cidev_co_market_category;
+--
+--drop table if exists cidev_co_order;
+--
+--drop table if exists cidev_co_tnt;
+--
+--drop table if exists cidev_my_purchase_apps;
+--
+--drop table if exists cidev_popular_apps;
+--
+--drop table if exists cidev_project;
+--
+--drop table if exists cidev_recommend_apps;
+--
+--drop table if exists cidev_type_info;
+--
+--drop table if exists cimobi_customescenario_service_assoc;
+--
+--drop table if exists cimobi_myfootprint;
+--
+--drop table if exists cimobi_recommend_services;
+--
+--drop table if exists cimobi_svc;
+--
+--drop table if exists cimobi_svc_avgscore;
+--
+--drop table if exists cimobi_svc_invoke;
+--
+--drop table if exists cimobi_svc_remark;
+--
+--drop table if exists cimobi_svc_type;
+--
+--drop table if exists cimobi_usercustom_scenario;
+--
+--drop table if exists comobi_svc_loc_assoc;
 
 /*==============================================================*/
 /* Table: career                                                */
