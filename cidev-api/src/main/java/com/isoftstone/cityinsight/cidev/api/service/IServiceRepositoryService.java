@@ -26,7 +26,9 @@ public interface IServiceRepositoryService {
 	
 	List<Application> selectSelfUnAuditedServices(String userId, String appType, Integer pageNum,Integer pageSize);
 	
-	List<Application> selectSelfNewestServices(String userId, String appType, Integer pageNum, Integer pageSize);
+	List<Application> selectSelfNewestServices(String userId, String appType, String channel, String status, Integer pageNum, Integer pageSize);
+	
+	List<Application> selectSelfSubscribedServices(String userId, String appType, String channel, String status, Integer pageNum, Integer pageSize);
 	
 	List<Application> selectSelfAppVersionList(String appId, Integer pageNum, Integer pageSize);
 	

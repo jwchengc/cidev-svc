@@ -194,10 +194,34 @@
 		         where version_id in (select SUBSTRING_INDEX(group_concat(version_id order by created_at DESC),',',1) 
 		                                from cidev_application_version group by app_id 
 		                     )
+		          <if test="channel != null">
+		           and published_channel = #{channel}
+		          </if>
+		          <if test="status != null">
+		           and current_audit_status = #{status}
+		          </if>
 		        ) ver on app.app_id = ver.app_id
 		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0 and fileass.file_seq = 1
 		  join cibase_files file on fileass.file_id = file.file_id
 		  order by ver.created_at DESC
+	</select>
+	
+	<select id="selectSelfSubscribedServices" resultMap="Application" parameterType="hashmap">
+		select app.app_id, app.app_name, app.app_type, app.svc_category_id,
+		       ver.version_id, ver.app_version, ver.description,
+		       ver.version_info, ver.keyword, ver.copyright, ver.link_man,
+		       ver.mobile, ver.address, ver.published_channel, ver.co_channel_id, 
+		       ver.current_audit_status,
+		       file.file_url
+		  from (select * from cidev_application where app_id in (select app_id from cidev_my_purchase_apps where user_id = #{userId}) and app_type = #{appType}) app
+		  join (select * from cidev_application_version 
+		         where is_onlined_version = 0
+		         <if test="status != null">
+		           and current_audit_status = #{status}
+		          </if>
+		       ) ver on app.app_id = ver.app_id
+		  join cidev_base_files_assoc fileass on ver.version_id = fileass.version_id and fileass.file_type = 0 and fileass.file_seq = 2
+		  join cibase_files file on fileass.file_id = file.file_id
 	</select>
 	
 	<select id="selectSelfAppVersionList" resultMap="Application" parameterType="string">
@@ -212,6 +236,7 @@
 		    on app.app_id = ver.app_id
 	</select>
 	
+	<!-- save -->
 	<insert id="saveApplication" parameterType="com.isoftstone.cityinsight.cidev.api.domain.Application">
 		insert into cidev_application(app_id, app_name, app_type, svc_category_id, is_onlined, created_by, created_at)
 		values(#{appId}, #{appName}, #{appType}, #{svcCategoryId}, 1, #{createdBy}, now())

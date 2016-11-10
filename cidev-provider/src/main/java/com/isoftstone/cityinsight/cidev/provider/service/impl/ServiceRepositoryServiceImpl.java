@@ -130,13 +130,27 @@ public class ServiceRepositoryServiceImpl implements IServiceRepositoryService {
 	}
 
 	@Override
-	public List<Application> selectSelfNewestServices(String userId, String appType, Integer pageNum,
+	public List<Application> selectSelfNewestServices(String userId, String appType, String channel, String status, Integer pageNum,
 			Integer pageSize) {
 		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("appType", appType);
 		params.put("userId", userId);
+		params.put("channel", channel);
+		params.put("status", status);
 		applicationMapper.selectSelfNewestServices(params);
+		return page.getResult();
+	}
+	
+	public List<Application> selectSelfSubscribedServices(String userId, String appType, String channel, String status,
+			Integer pageNum, Integer pageSize) {
+		Page<Application> page = PageHelper.startPage(pageNum, pageSize);
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("appType", appType);
+		params.put("userId", userId);
+		params.put("channel", channel);
+		params.put("status", status);
+		applicationMapper.selectSelfSubscribedServices(params);
 		return page.getResult();
 	}
 

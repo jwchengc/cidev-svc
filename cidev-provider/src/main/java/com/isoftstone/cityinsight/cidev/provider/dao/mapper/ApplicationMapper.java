@@ -33,6 +33,8 @@ public interface ApplicationMapper {
 	
 	List<Application> selectSelfNewestServices(Map<String, Object> params);
 	
+	List<Application> selectSelfSubscribedServices(Map<String, Object> params);
+	
 	List<Application> selectSelfAppVersionList(String appId);
 	
 	void saveApplication(Application application);
